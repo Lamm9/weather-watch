@@ -1,4 +1,4 @@
-:root  {
+#root  {
 
 }
 
@@ -8,17 +8,22 @@ header {
     margin: 0;
 }
 
+h1 {
+    text-align: center;
+}
+
 #sidebar {
-    margin: 2px;
+    margin: 20px 2px 2px 2px;
     padding: 2px;
     position: relative;
     justify-content: left;
-    width: 200px;
+    width: 215px;
     height: 700px;
     background-color: lightgray;
+    display: flex;
 }
 
-#searchbar {
-    padding: 2px;
-    margin: 2px;
+#results {
+    display: flex;
+    width: auto;
 }
