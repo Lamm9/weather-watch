@@ -1,23 +1,27 @@
 $(function () {
     var location = $('#searchbar');
-    var monday = $('#monday');
-    var tuesday = $('#tuesday');
-    var wednesday = $('#wednesday');
-    var thursdsay = $('#thursday');
-    var friday = $('#friday')
-    var saturday = $('#saturday');
-    var sunday = $('#sunday');
+    var day1 = $('#day1');
+    var day2 = $('#day2');
+    var day3 = $('#day3');
+    var day4 = $('#day4');
+    var day5 = $('#day5')
     var lastSearch = location.value;
     var latitude
     var longitude
 
     var weatherURL = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ latitude + '&lon=' + longitude +'&appid=2d71f66b3295a7a9148c6748d8cd3964';
 
-    fetch(weatherURL);
+    fetch(weatherURL).then(function (response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+              currentWeather(data) ; 
+            })
+        }
+     });
 
-    location.on('submit', function() {
-        localStorage.setItem('Last Search', lastSearch);
+    function currentWeather(data) {
+        $('#results').addClass('visible');
+        $('#history').append(lastSearch);
 
-        monday.$('<p>'+lastSearch+'</p>')
-    })
+    }
 })
